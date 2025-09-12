@@ -14,8 +14,8 @@ void handleChildDone(int signal) {child_printed = true; }
 
 int main() {
     
-    pid_t pid = fork();
     signal(SIGCHLD, handleChildDone);
+    pid_t pid = fork();
 
     if (pid > 0) {
         while (!child_printed) {}
