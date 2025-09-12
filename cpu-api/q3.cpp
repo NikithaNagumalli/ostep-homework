@@ -14,7 +14,7 @@ void handleChildDone(int signal) {child_printed = true; }
 
 int main() {
     
-    signal(SIGCHLD, handleChildDone);
+    signal(SIGCHLD, handleChildDone); // signal handler should be created before fork to avoid case where child exits before parent initializes signal handler
     pid_t pid = fork();
 
     if (pid > 0) {
